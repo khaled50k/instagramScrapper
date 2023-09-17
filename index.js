@@ -28,7 +28,10 @@ async function login(username, password) {
   ig.state.generateDevice(username);
   if (!ig.state.cookieJar._authenticated) {
     try {
+      await ig.simulate.preLoginFlow();
       await ig.account.login(username, password);
+      process.nextTick(async () => await ig.simulate.postLoginFlow());
+
       console.log("Logged in successfully.");
       await saveSession();
     } catch (error) {
