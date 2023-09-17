@@ -1,6 +1,6 @@
 const { IgApiClient } = require("instagram-private-api");
 const fs = require("fs");
-
+require("dotenv").config();
 const ig = new IgApiClient();
 
 async function loadSession() {
@@ -57,8 +57,11 @@ async function getLikers(mediaId) {
 (async () => {
   try {
     await loadSession();
-    const username = "your_username";
-    const password = "your_password";
+    // your instagram username
+    const username = process.env.USERNAME;
+    // your instagram password
+    const password = process.env.PASSWORD;
+    // put target username to search for
     const targetUsername = "instagram";
 
     if (!ig.state.cookieJar._authenticated) {
