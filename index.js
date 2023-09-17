@@ -57,8 +57,8 @@ async function getLikers(mediaId) {
 (async () => {
   try {
     await loadSession();
-    const username = "mo.o.o.o.n.s";
-    const password = "khaled@@1000$";
+    const username = "your_username";
+    const password = "your_password";
     const targetUsername = "instagram";
 
     if (!ig.state.cookieJar._authenticated) {
